@@ -15,6 +15,25 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "max-len": ["error", { "code": 350 }]
-  }
+    "max-len": ["error", { "code": 350 }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ],
+   "react/react-in-jsx-scope": "off",    
+   "react/jsx-filename-extension": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
 }
