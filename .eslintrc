@@ -14,6 +14,7 @@
   "plugins": [
     "@typescript-eslint"
   ],
+  "ignorePatterns": ["*.test.ts", "*.test.tsx"],
   "rules": {
     "max-len": ["error", { "code": 350 }],
     "import/extensions": [
