@@ -17,7 +17,7 @@ export const ROUTES: Array<RouteType> = [
   {
     name: 'login',
     path: PATHS.login,
-    id: 1,
+    id: 2,
     Component: Login,
   },
 ];
