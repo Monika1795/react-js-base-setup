@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import Input from '../../components/common/Input';
-import Button from '../../components/common/Button';
+import Input from '../../common/components/Input';
+import Button from '../../common/components/Button';
 
 function Login() {
   const onChange = (e: any) => {

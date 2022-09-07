@@ -39,6 +39,12 @@ export const getDataApi = ({
   }
 };
 
+function handleLogout(response: { data?: { statusCode: number; }; }) {
+  if (response?.data?.statusCode === 401) {
+    // when token will expire
+    // store.dispatch({ type: AUTH_FAILURE });
+  }
+}
 export const postDataApi = ({
   path = 'no-path-provided',
   headers = {
@@ -113,10 +119,3 @@ export const deleteDataApi = ({
     return error.message;
   }
 };
-
-function handleLogout(response: { data?: { statusCode: number; }; }) {
-  if (response?.data?.statusCode === 401) {
-    // when token will expire
-    // store.dispatch({ type: AUTH_FAILURE });
-  }
-}

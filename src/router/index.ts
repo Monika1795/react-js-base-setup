@@ -1,20 +1,16 @@
-import Home from '../pages/Home';
-import Login from '../pages/Login';
-import ToDo from '../pages/ToDoList';
+import Home from '../modules/Home';
+import Login from '../modules/Login';
+import ToDo from '../modules/ToDoList';
 import { RouteType } from './types';
+import { PATHS } from '../helpers/constants';
 
-export const PATHS : any = {
-  home: '/',
-  login: '/login',
-  todo: '/todo',
-};
-
-export const ROUTES: Array<RouteType> = [
+const ROUTES: Array<RouteType> = [
   {
     name: 'home',
     path: PATHS.home,
     id: 1,
     Component: Home,
+    isPrivate: true,
   },
   {
     name: 'login',
@@ -29,3 +25,5 @@ export const ROUTES: Array<RouteType> = [
     Component: ToDo,
   },
 ];
+
+export default ROUTES;
