@@ -10,19 +10,23 @@ const ROUTES: Array<RouteType> = [
     path: PATHS.home,
     id: 1,
     Component: Home,
-    isPrivate: true,
+    isPrivate: false,
   },
   {
     name: 'login',
     path: PATHS.login,
     id: 2,
     Component: Login,
+    isPrivate: false,
+
   },
   {
     name: 'todo',
     path: PATHS.todo,
     id: 3,
     Component: ToDo,
+    isPrivate: false,
+
   },
 ];
 

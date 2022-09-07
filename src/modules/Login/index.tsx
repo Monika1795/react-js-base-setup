@@ -16,7 +16,7 @@ function Login() {
         alignContent: 'center',
       }}
     >
-      Login
+      <h1>Login</h1>
       <Input type="email" label="Email" fullWidth handleChange={onChange} />
       <Input type="password" label="Password" fullWidth handleChange={onChange} />
       <Button color="primary" label="Submit" />

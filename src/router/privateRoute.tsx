@@ -1,9 +1,11 @@
-import { Navigate, Outlet } from 'react-router-dom';
-import { getToken } from '../utils';
+import React from 'react';
+import { Navigate } from 'react-router-dom';
 
-function PrivateRoutes() {
-  const session = getToken();
-  return session ? <Outlet /> : <Navigate to="/signin" />;
+import { getAccessToken } from '../utils/storage';
+
+function PrivateRoute({ children }:any) {
+  const auth = getAccessToken();
+  return auth ? children : <Navigate to="/" />;
 }
 
-export default PrivateRoutes;
+export default PrivateRoute;
