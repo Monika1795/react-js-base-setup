@@ -1,30 +1,15 @@
 import './App.css';
 import { Provider } from 'react-redux';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import ROUTES from './router';
-import { RouteType } from './router/types';
-import PrivateRoute from './router/privateRoute';
-
+import { BrowserRouter } from 'react-router-dom';
 import { store } from './redux/store';
+import RoutesWrapper from './router';
+import './assets/styles/index.css';
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          {ROUTES.map(({
-            path, id, Component, isPrivate,
-          }: RouteType) => {
-            if (isPrivate) {
-              return (
-                <PrivateRoute>
-                  <Route key={id} path={path} element={<Component />} />
-                </PrivateRoute>
-              );
-            }
-              <Route key={id} path={path} element={<Component />} />;
-          })}
-        </Routes>
+        <RoutesWrapper />
       </BrowserRouter>
     </Provider>
   );

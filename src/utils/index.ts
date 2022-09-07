@@ -18,5 +18,3 @@ export const validatePhone = (phone:string) => (/^\(?([0-9]{3})\)?[-. ]?([0-9]{3
  * @returns return true or false
  */
 export const validatePassword = (password: string) => /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/.test(password);
-
-export const getToken = () => localStorage.getItem('token');

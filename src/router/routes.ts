@@ -1,8 +1,9 @@
 import Home from '../modules/Home';
 import Login from '../modules/Login';
 import ToDo from '../modules/ToDoList';
-import { RouteType } from './types';
 import { PATHS } from '../helpers/constants';
+import { RouteType } from './types';
+import Dashboard from '../modules/Dashboard';
 
 const ROUTES: Array<RouteType> = [
   {
@@ -26,6 +27,14 @@ const ROUTES: Array<RouteType> = [
     id: 3,
     Component: ToDo,
     isPrivate: false,
+
+  },
+  {
+    name: 'dashboard',
+    path: PATHS.dashboard,
+    id: 3,
+    Component: Dashboard,
+    isPrivate: true,
 
   },
 ];

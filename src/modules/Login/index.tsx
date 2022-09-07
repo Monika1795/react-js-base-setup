@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Box from '@mui/material/Box';
 import Input from '../../common/components/Input';
 import Button from '../../common/components/Button';
 
 function Login() {
-  const onChange = (e: any) => {
-    e.preventDefault();
-  };
+  const onChange = useCallback(
+    (e: any) => {
+      e.preventDefault();
+    },
+    [], // add dependency here
+  );
+
   return (
     <Box
       sx={{
