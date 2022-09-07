@@ -12,8 +12,6 @@ function ListTodo() {
     users: state?.users?.users,
   }));
 
-  console.log(users, '***users ***');
-
   const dispatch = useAppDispatch();
   const [isEditing, setEditing] = useState(false);
   const [state, setState] = useState<ListToDoType>({
