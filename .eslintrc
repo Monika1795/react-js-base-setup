@@ -17,7 +17,7 @@
   "ignorePatterns": ["*.test.ts", "*.test.tsx"],
   "rules": {
     "max-len": ["error", { "code": 350 }],
-    "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+    "no-param-reassign": [2, { "props": false }],
     "import/extensions": [
       "error",
       "ignorePackages",
