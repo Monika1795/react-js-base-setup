@@ -119,6 +119,9 @@ body{
  display: flex;
  font-size: 1.5em
 }
+.headingColor{
+  color: #625151;
+}
 /* small tablet styles */
 @media screen and (min-width: 620px){
  input{

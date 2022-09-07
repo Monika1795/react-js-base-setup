@@ -52,7 +52,7 @@ function ListTodo() {
     <div>
       {isEditing ? (
         <div className="form">
-          <h2>Update your plan for today</h2>
+          <h2 className="headingColor">Update your plan for today</h2>
           <input
             type="text"
             value={content}
@@ -86,7 +86,7 @@ function ListTodo() {
         </ul>
       )}
 
-      <h2>User List</h2>
+      <h2 className="headingColor">User List</h2>
       <ul className="todos">
         {users && users.length > 0 && users.map((u:any) => (
           <li className="grid" key={u.id}>
