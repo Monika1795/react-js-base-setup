@@ -28,8 +28,8 @@
         "tsx": "never"
       }
    ],
-   "eslint linebreak-style": ["error", "windows", "unix"],
-   "react/react-in-jsx-scope": "off",    
+   "linebreak-style": ["error", "unix"],
+   "react/react-in-jsx-scope": "off",
    "react/jsx-filename-extension": "off",
    "react/function-component-definition": [
     2,
