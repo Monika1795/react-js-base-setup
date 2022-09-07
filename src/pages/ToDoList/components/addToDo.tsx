@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 
+import { useAppDispatch } from '../../../redux/hooks';
 import { AddDoType } from '../types';
 import { addToDo } from '../../../redux/features/todoSlice';
 
 function AddTodo() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [state, setState] = useState<AddDoType>({
     content: '',
     contentError: null,

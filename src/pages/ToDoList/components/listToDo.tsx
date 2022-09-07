@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiFillEdit, AiOutlineCloseCircle } from 'react-icons/ai';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 
 import { deleteToDo, editTodo } from '../../../redux/features/todoSlice';
+import { fetchUsers } from '../../../redux/services/user.service';
 import { ListToDoType, ShowList } from '../types';
-import { RootState } from '../../../redux/store';
 
 function ListTodo() {
-  const { todoList } = useSelector((state: RootState) => state.toDo);
+  const { users, todoList = [] } = useAppSelector((state) => ({
+    todoList: state?.toDo?.todoList,
+    users: state?.users?.users,
+  }));
 
-  const dispatch = useDispatch();
+  console.log(users, '***users ***');
+
+  const dispatch = useAppDispatch();
   const [isEditing, setEditing] = useState(false);
   const [state, setState] = useState<ListToDoType>({
     id: null,
@@ -21,6 +26,10 @@ function ListTodo() {
     setEditing(true);
     setState({ ...state, id, content });
   };
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setState({
@@ -35,9 +44,12 @@ function ListTodo() {
       setState({ ...state, contentError: 'You must write something!' });
       return;
     }
-    dispatch(editTodo({ content, id }));
+    if (id) {
+      dispatch(editTodo({ content, id }));
+    }
     setEditing(false);
   };
+
   return (
     <div>
       {isEditing ? (
@@ -75,6 +87,15 @@ function ListTodo() {
             ))}
         </ul>
       )}
+
+      <h2>User List</h2>
+      <ul className="todos">
+        {users && users.length > 0 && users.map((u:any) => (
+          <li className="grid" key={u.id}>
+            <span key={u.id} className="content">{u.name}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

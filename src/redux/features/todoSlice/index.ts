@@ -1,29 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { initialToDoState } from '../../types/todo';
+
+const initialState: initialToDoState = {
+  todoList: [
+    { id: 1, content: 'Cook Food' },
+    { id: 2, content: 'Meet React Team' },
+  ],
+};
 
 export const toDoSlider = createSlice({
   name: 'toDo',
-  initialState: {
-    todoList: [
-      { id: 1, content: 'Cook Food' },
-      { id: 2, content: 'Meet React Team' },
-    ],
-  },
+  initialState,
   reducers: {
-    addToDo: (state, action) => {
+    addToDo: (state, action: PayloadAction<{newContent: string}>) => {
       const newTodoList = {
         id: Math.random(),
         content: action.payload.newContent,
       };
       state.todoList.push(newTodoList);
     },
-    deleteToDo: (state, action) => {
+    deleteToDo: (state, action: PayloadAction<{id:number}>) => {
       const { todoList } = state;
 
       state.todoList = todoList.filter((item) => item.id !== action.payload.id);
     },
-    editTodo: (state, action) => {
+    editTodo: (state, action:PayloadAction<{content: string, id: number}>) => {
       const { todoList } = state;
-
       state.todoList = todoList.map((item) => (item.id === action.payload.id ? action.payload : item));
     },
   },

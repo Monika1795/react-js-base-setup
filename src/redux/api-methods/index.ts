@@ -1,52 +1,48 @@
-import axios from "axios";
+import axios from 'axios';
 
 // import { AUTH_FAILURE } from "src/redux/actions";
 // import { store } from "src/redux/store";
 import { axiosMethodType } from 'src/redux/types';
 
-const getApiUrl = (path: string = "") => {
-  return `${process.env.REACT_APP_API_BASE_URL}/${path}`;
-};
+const getApiUrl = (path: string = '') => `${process.env.REACT_APP_API_BASE_URL}/${path}`;
 
 function getTokenHeaders() {
   const accessToken = '';
   return {
-    "x-access-token": accessToken,
+    'x-access-token': accessToken,
   };
 }
 
 export const getDataApi = ({
-  path = "no-path-provided",
+  path = 'no-path-provided',
   headers = {
-    accept: "text/plain",
+    accept: 'text/plain',
     ...getTokenHeaders(),
   },
   data = {},
 }: axiosMethodType) => {
   try {
-    return new Promise((resolve, reject) => {
-      return axios
-        .get(`${getApiUrl(path)}`, {
-          headers,
-          params: data,
-        })
-        .then((response: any) => {
-          handleLogout(response);
-          resolve(response);
-        })
-        .catch((error: any) => {
-          reject(error);
-        });
-    });
+    return new Promise((resolve, reject) => axios
+      .get(`${getApiUrl(path)}`, {
+        headers,
+        params: data,
+      })
+      .then((response: any) => {
+        handleLogout(response);
+        resolve(response);
+      })
+      .catch((error: any) => {
+        reject(error);
+      }));
   } catch (error: any) {
     return error.message;
   }
 };
 
 export const postDataApi = ({
-  path = "no-path-provided",
+  path = 'no-path-provided',
   headers = {
-    accept: "text/plain",
+    accept: 'text/plain',
     ...getTokenHeaders(),
   },
   data = {},
@@ -69,9 +65,9 @@ export const postDataApi = ({
 };
 
 export const putDataApi = ({
-  path = "no-path-provided",
+  path = 'no-path-provided',
   headers = {
-    accept: "text/plain",
+    accept: 'text/plain',
     ...getTokenHeaders(),
   },
   data = {},
@@ -94,9 +90,9 @@ export const putDataApi = ({
 };
 
 export const deleteDataApi = ({
-  path = "no-path-provided",
+  path = 'no-path-provided',
   headers = {
-    accept: "text/plain",
+    accept: 'text/plain',
     ...getTokenHeaders(),
   },
   data = {},
