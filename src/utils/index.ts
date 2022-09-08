@@ -18,3 +18,13 @@ export const validatePhone = (phone:string) => (/^\(?([0-9]{3})\)?[-. ]?([0-9]{3
  * @returns return true or false
  */
 export const validatePassword = (password: string) => /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/.test(password);
+
+
+// Not used just here to show that functions that are used to perform calculations are placed in utils
+
+export const formatDollars = (dollar :number) => {
+  let dollars;
+  dollars = (Math.round(dollar * 100) / 100).toFixed(2);
+  dollars = dollar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return dollars;
+}
