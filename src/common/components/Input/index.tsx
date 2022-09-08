@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
@@ -33,4 +34,4 @@ function Input({
   );
 }
 
-export default Input;
+export default memo(Input);

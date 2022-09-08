@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 
@@ -16,4 +17,4 @@ function CommonButton({ label, color }: InputPropsType) {
   );
 }
 
-export default CommonButton;
+export default memo(CommonButton);
