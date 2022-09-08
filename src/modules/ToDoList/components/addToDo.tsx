@@ -11,14 +11,24 @@ function AddTodo() {
     contentError: null,
   });
 
-  const handleChange = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
-    setAddToDo({
-      ...addTodoData,
-      [e.target.name]: e.target.value,
-      [`${e.target.name}Error`]: null,
-    });
-  }, [addTodoData]);
+  /**
+   *  set content for todo List
+   * @param e cross browser event contains value and methods
+   */
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setAddToDo({
+        ...addTodoData,
+        [e.target.name]: e.target.value,
+        [`${e.target.name}Error`]: null,
+      });
+    },
+    [addTodoData],
+  );
 
+  /**
+   *  add content in todo List
+   */
   const add = useCallback(() => {
     const { content } = addTodoData;
     if (content === '') {
@@ -36,21 +46,11 @@ function AddTodo() {
   return (
     <div className="form">
       <h2 className="headingColor">What&apos;s your plan for today</h2>
-      <input
-        type="text"
-        value={content}
-        name="content"
-        onChange={handleChange}
-      />
-      <button
-        type="button"
-        className="button"
-        onClick={add}
-      >
+      <input type="text" value={content} name="content" onChange={handleChange} />
+      <button type="button" className="button" onClick={add}>
         Add
       </button>
-      {contentError
-        ? <div className="error">{contentError}</div> : null}
+      {contentError ? <div className="error">{contentError}</div> : null}
     </div>
   );
 }

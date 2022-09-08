@@ -29,13 +29,20 @@ function ListTodo() {
     dispatch(fetchUsers());
   }, []);
 
-  const handleChange = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
-    setEditToDoData({
-      ...editToDoData,
-      [e.target.name]: e.target.value,
-      [`${e.target.name}Error`]: null,
-    });
-  }, [editToDoData]);
+  /**
+   *  set content to edit in Todo List
+   * @param e cross browser event contains value and methods
+   */
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setEditToDoData({
+        ...editToDoData,
+        [e.target.name]: e.target.value,
+        [`${e.target.name}Error`]: null,
+      });
+    },
+    [editToDoData],
+  );
 
   const { content, contentError, id } = editToDoData;
   const edit = useCallback(() => {
@@ -54,12 +61,7 @@ function ListTodo() {
       {isEditing ? (
         <div className="form">
           <h2 className="headingColor">Update your plan for today</h2>
-          <input
-            type="text"
-            value={content}
-            name="content"
-            onChange={handleChange}
-          />
+          <input type="text" value={content} name="content" onChange={handleChange} />
           <button type="button" className="button" onClick={edit}>
             Edit
           </button>
@@ -67,9 +69,9 @@ function ListTodo() {
         </div>
       ) : (
         <ul className="todos">
-          {todoList
-            && todoList.length > 0
-            && todoList.map((t: ShowList) => (
+          {todoList &&
+            todoList.length > 0 &&
+            todoList.map((t: ShowList) => (
               <li className="grid" key={t.id}>
                 <span className="content">{t.content}</span>
                 <span className="todo-action">
@@ -77,10 +79,7 @@ function ListTodo() {
                     className="close"
                     onClick={() => dispatch(deleteToDo({ id: t.id }))}
                   />
-                  <AiFillEdit
-                    className="edit"
-                    onClick={() => onEditToggle(t.id, t.content)}
-                  />
+                  <AiFillEdit className="edit" onClick={() => onEditToggle(t.id, t.content)} />
                 </span>
               </li>
             ))}
@@ -89,11 +88,15 @@ function ListTodo() {
 
       <h2 className="headingColor">User List</h2>
       <ul className="todos">
-        {users && users.length > 0 && users.map((u:any) => (
-          <li className="grid" key={u.id}>
-            <span key={u.id} className="content">{u.name}</span>
-          </li>
-        ))}
+        {users &&
+          users.length > 0 &&
+          users.map((u: any) => (
+            <li className="grid" key={u.id}>
+              <span key={u.id} className="content">
+                {u.name}
+              </span>
+            </li>
+          ))}
       </ul>
     </div>
   );
