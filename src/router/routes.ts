@@ -6,6 +6,14 @@ import DashboardWrapper from '../modules/Dashboard';
 
 const ROUTES: Array<RouteType> = [
   {
+    name: 'todo',
+    path: PATHS.todo,
+    id: 1,
+    Component: TodoWrapper,
+    isPrivate: false,
+
+  },
+  {
     name: 'login',
     path: PATHS.login,
     id: 2,
@@ -13,14 +21,7 @@ const ROUTES: Array<RouteType> = [
     isPrivate: false,
 
   },
-  {
-    name: 'todo',
-    path: PATHS.todo,
-    id: 3,
-    Component: TodoWrapper,
-    isPrivate: false,
 
-  },
   {
     name: 'dashboard',
     path: PATHS.dashboard,
