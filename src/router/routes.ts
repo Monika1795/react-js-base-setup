@@ -1,8 +1,11 @@
-import HomeWrapper from '../modules/Home';
-import TodoWrapper from '../pages/todo';
+import React from 'react';
 import { PATHS } from '../helpers/constants';
 import { RouteType } from './types';
-import DashboardWrapper from '../modules/Dashboard';
+
+// Instead of regular import statements, we will use the above approach for lazy loading
+const LoginWrapper = React.lazy(() => import('../pages/login'));
+const TodoWrapper = React.lazy(() => import('../pages/todo'));
+const DashboardWrapper = React.lazy(() => import('../pages/dashboard'));
 
 const ROUTES: Array<RouteType> = [
   {
@@ -17,7 +20,7 @@ const ROUTES: Array<RouteType> = [
     name: 'login',
     path: PATHS.login,
     id: 2,
-    Component: HomeWrapper,
+    Component: LoginWrapper,
     isPrivate: false,
 
   },
