@@ -115,6 +115,7 @@ body{
 }
 .content{
  grid-column: 1/8;
+ color: white;
 }
 .todo-action{
  display: flex;

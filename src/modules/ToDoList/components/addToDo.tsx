@@ -32,7 +32,7 @@ function AddTodo() {
   const { content, contentError } = state;
   return (
     <div className="form">
-      <h2>What&apos;s your plan for today</h2>
+      <h2 className="headingColor">What&apos;s your plan for today</h2>
       <input
         type="text"
         value={content}
