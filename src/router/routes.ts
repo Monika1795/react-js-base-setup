@@ -1,23 +1,23 @@
-import Home from '../modules/Home';
-import Login from '../modules/Login';
-import ToDo from '../modules/ToDoList';
+import HomeWrapper from '../modules/Home';
+import LoginWrapper from '../modules/Login';
+import TodoWrapper from '../pages/todo';
 import { PATHS } from '../helpers/constants';
 import { RouteType } from './types';
-import Dashboard from '../modules/Dashboard';
+import DashboardWrapper from '../modules/Dashboard';
 
 const ROUTES: Array<RouteType> = [
   {
     name: 'home',
     path: PATHS.home,
     id: 1,
-    Component: Home,
+    Component: HomeWrapper,
     isPrivate: false,
   },
   {
     name: 'login',
     path: PATHS.login,
     id: 2,
-    Component: Login,
+    Component: LoginWrapper,
     isPrivate: false,
 
   },
@@ -25,7 +25,7 @@ const ROUTES: Array<RouteType> = [
     name: 'todo',
     path: PATHS.todo,
     id: 3,
-    Component: ToDo,
+    Component: TodoWrapper,
     isPrivate: false,
 
   },
@@ -33,7 +33,7 @@ const ROUTES: Array<RouteType> = [
     name: 'dashboard',
     path: PATHS.dashboard,
     id: 3,
-    Component: Dashboard,
+    Component: DashboardWrapper,
     isPrivate: true,
 
   },
