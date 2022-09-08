@@ -20,19 +20,21 @@ function Login() {
       // reset the state of your app so the error doesn't happen again
       }}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignContent: 'center',
-        }}
-      >
-        <h1>Login</h1>
-        <Input type="email" label="Email" fullWidth handleChange={onChange} />
-        <Input type="password" label="Password" fullWidth handleChange={onChange} />
-        <Button color="primary" label="Submit" />
-      </Box>
+      <div className="center">
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignContent: 'center',
+          }}
+        >
+          <h1>Login</h1>
+          <Input type="email" label="Email" fullWidth handleChange={onChange} />
+          <Input type="password" label="Password" fullWidth handleChange={onChange} />
+          <Button color="primary" label="Submit" />
+        </Box>
+      </div>
     </ErrorBoundary>
   );
 }

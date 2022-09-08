@@ -1,8 +1,9 @@
-import HomeWrapper from '../modules/Home';
-import TodoWrapper from '../pages/todo';
 import { PATHS } from '../helpers/constants';
 import { RouteType } from './types';
-import DashboardWrapper from '../modules/Dashboard';
+
+import LoginWrapper from '../pages/login';
+import TodoWrapper from '../pages/todo';
+import DashboardWrapper from '../pages/dashboard';
 
 const ROUTES: Array<RouteType> = [
   {
@@ -17,7 +18,7 @@ const ROUTES: Array<RouteType> = [
     name: 'login',
     path: PATHS.login,
     id: 2,
-    Component: HomeWrapper,
+    Component: LoginWrapper,
     isPrivate: false,
 
   },
