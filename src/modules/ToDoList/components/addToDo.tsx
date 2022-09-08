@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { useAppDispatch } from '../../../redux/hooks';
 import { AddDoType } from '../types';
@@ -6,30 +6,33 @@ import { addToDo } from '../../../redux/features/todoSlice';
 
 function AddTodo() {
   const dispatch = useAppDispatch();
-  const [state, setState] = useState<AddDoType>({
+  const [addTodoData, setAddToDo] = useState<AddDoType>({
     content: '',
     contentError: null,
   });
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setState({
-      ...state,
+
+  const handleChange = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
+    setAddToDo({
+      ...addTodoData,
       [e.target.name]: e.target.value,
       [`${e.target.name}Error`]: null,
     });
-  };
-  const add = () => {
-    const { content } = state;
+  }, [addTodoData]);
+
+  const add = useCallback(() => {
+    const { content } = addTodoData;
     if (content === '') {
-      setState({
-        ...state,
+      setAddToDo({
+        ...addTodoData,
         contentError: 'You must write something!',
       });
       return;
     }
     dispatch(addToDo({ newContent: content }));
-    setState({ ...state, content: '' });
-  };
-  const { content, contentError } = state;
+    setAddToDo({ ...addTodoData, content: '' });
+  }, [addTodoData]);
+
+  const { content, contentError } = addTodoData;
   return (
     <div className="form">
       <h2 className="headingColor">What&apos;s your plan for today</h2>

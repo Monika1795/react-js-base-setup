@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { AiFillEdit, AiOutlineCloseCircle } from 'react-icons/ai';
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 
@@ -14,7 +14,7 @@ function ListTodo() {
 
   const dispatch = useAppDispatch();
   const [isEditing, setEditing] = useState(false);
-  const [state, setState] = useState<ListToDoType>({
+  const [editToDoData, setEditToDoData] = useState<ListToDoType>({
     id: null,
     content: '',
     contentError: null,
@@ -22,31 +22,32 @@ function ListTodo() {
 
   const onEditToggle = (id: number, content: string) => {
     setEditing(true);
-    setState({ ...state, id, content });
+    setEditToDoData({ ...editToDoData, id, content });
   };
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setState({
-      ...state,
+  const handleChange = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
+    setEditToDoData({
+      ...editToDoData,
       [e.target.name]: e.target.value,
       [`${e.target.name}Error`]: null,
     });
-  };
-  const { content, contentError, id } = state;
-  const edit = () => {
+  }, [editToDoData]);
+
+  const { content, contentError, id } = editToDoData;
+  const edit = useCallback(() => {
     if (content === '') {
-      setState({ ...state, contentError: 'You must write something!' });
+      setEditToDoData({ ...editToDoData, contentError: 'You must write something!' });
       return;
     }
     if (id) {
       dispatch(editTodo({ content, id }));
     }
     setEditing(false);
-  };
+  }, [editToDoData, isEditing]);
 
   return (
     <div>
